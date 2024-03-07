@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="container mx-auto mt-20">
       <Header />
-      <div className="mt-12 lg:m-20 md:flex text-center">
+      <div className="mt-12 mx-4 md:mx-24 md:flex text-center">
         <Form />
         <List />
       </div>
