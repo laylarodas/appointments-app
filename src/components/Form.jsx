@@ -8,6 +8,7 @@ export const Form = () => {
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +16,11 @@ export const Form = () => {
     //validation
     if([name, owner, email, date, description].includes('')) {
       console.log('All fields are required');
+      return setError(true);
       
     }else{
       console.log('All fields are filled');
+      return setError(false);
     }
   }
   
@@ -30,6 +33,9 @@ export const Form = () => {
       </p>
 
       <form action="" onSubmit={handleSubmit} className='bg-white shadow-md rounded-lg py-10 px-5 mb-10'>
+        {error && 
+          (<div className='bg-red-600 text-white text-center p-3 uppercase font-bold mb-3 rounded-sm'>All fields are required</div>)
+        }
         <div className='text-left mb-5'>
           <label className='block text-gray-700 uppercase font-bold' htmlFor="name">Pet Name: {name}</label>
           <input type="text" id='name' placeholder='Introduce pet name' className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md' onChange={(e)=> setName(e.target.value)}/>
