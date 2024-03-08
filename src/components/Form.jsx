@@ -92,7 +92,7 @@ export const Form = ({ setPets, pets }) => {
           }}/>
         </div>
 
-        <input type="submit" value="Add Pet" className='bg-indigo-600 w-full p-3 text-white font-bold uppercase rounded-sm hover:bg-indigo-700 cursor-pointer transition-all' />
+        <input type="submit" value="Add Pet" className='bg-indigo-600 w-full p-3 text-white font-bold uppercase rounded-md hover:bg-indigo-700 cursor-pointer transition-all' />
       </form>
     </div>
   )

@@ -25,6 +25,10 @@ export const Patient = ({pet}) => {
           Description: {''}
           <span className='font-normal normal-case'>{description}</span>
         </p>
+        <div className='flex justify-between mt-10'>
+          <button type='button' className='py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white text-bold rounded-md'>Edit</button>
+          <button type='button' className='py-2 px-10 bg-red-600 hover:bg-red-700 text-white text-bold rounded-md'>Delete</button>
+        </div>
       </div>
   )
 }
