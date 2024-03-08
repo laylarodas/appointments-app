@@ -15,7 +15,10 @@ function App() {
           pets={pets}
           setPets={setPets}
         />
-        <List />
+        <List 
+          pets={pets}
+          
+        />
       </div>
     </div>
   )

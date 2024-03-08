@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Error } from './Error';
 
 export const Form = ({ setPets, pets }) => {
 
@@ -9,6 +10,13 @@ export const Form = ({ setPets, pets }) => {
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState(false);
+
+  const idGenerator = () => {
+    const random =  Math.random().toString(36).substr(2);
+    const dates = Date.now().toString(36);
+
+    return random + dates;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +37,8 @@ export const Form = ({ setPets, pets }) => {
         owner,
         email,
         date,
-        description
+        description,
+        id: idGenerator()
       }
       console.log(pet);
       setPets([...pets, pet]);
@@ -40,7 +49,7 @@ export const Form = ({ setPets, pets }) => {
       setEmail('');
       setDate('');
       setDescription('');
-      
+
     }
   }
   
@@ -53,9 +62,7 @@ export const Form = ({ setPets, pets }) => {
       </p>
 
       <form action="" onSubmit={handleSubmit} className='bg-white shadow-md rounded-lg py-10 px-5 mb-10'>
-        {error && 
-          (<div className='bg-red-600 text-white text-center p-3 uppercase font-bold mb-3 rounded-sm'>All fields are required</div>)
-        }
+        {error && <Error>All fields are required</Error>}
         <div className='text-left mb-5'>
           <label className='block text-gray-700 uppercase font-bold' htmlFor="name">Pet Name: {name}</label>
           <input type="text" id='name' placeholder='Introduce pet name' className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md' onChange={(e)=> setName(e.target.value)}/>
