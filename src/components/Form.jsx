@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-export const Form = () => {
+export const Form = ({ setPets, pets }) => {
 
   const [name, setName] = useState('');
   const [owner, setOwner] = useState('');
@@ -16,11 +16,31 @@ export const Form = () => {
     //validation
     if([name, owner, email, date, description].includes('')) {
       console.log('All fields are required');
-      return setError(true);
+      setError(true);
+      return;
       
     }else{
       console.log('All fields are filled');
-      return setError(false);
+      setError(false);
+
+      //create object
+      const pet = {
+        name,
+        owner,
+        email,
+        date,
+        description
+      }
+      console.log(pet);
+      setPets([...pets, pet]);
+
+      //reset form
+      setName('');
+      setOwner('');
+      setEmail('');
+      setDate('');
+      setDescription('');
+      
     }
   }
   
