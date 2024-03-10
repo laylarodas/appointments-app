@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Error } from './Error';
 
-export const Form = ({ setPatients, patients, patient }) => {
+export const Form = ({ setPatients, patients, patient, setPatient }) => {
 
   const [name, setName] = useState('');
   const [owner, setOwner] = useState('');
@@ -56,6 +56,7 @@ export const Form = ({ setPatients, patients, patient }) => {
         petObject.id = patient.id;
         const updatedPets = patients.map(petState => petState.id === patient.id ? petObject : petState);
         setPatients(updatedPets);
+        setPatient({});
 
       } else {
         petObject.id = idGenerator();

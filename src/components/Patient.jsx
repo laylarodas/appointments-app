@@ -1,8 +1,16 @@
 import React from 'react'
 
-export const Patient = ({patient, setPatient}) => {
+export const Patient = ({patient, setPatient, deletePatient}) => {
 
-  const {name, owner, email, date, description} = patient;
+  const {name, owner, email, date, description, id} = patient;
+
+  const handleDelete = () => {
+    
+    const confirm = window.confirm('Are you sure you want to delete this patient?')
+    if (!confirm) return;
+    deletePatient(id);
+
+  }
 
   return (
     <div className='md:my-3 md:mx-5 mt-2 bg-white text-left shadow-md px-5 py-10 rounded-xl'>
@@ -30,7 +38,7 @@ export const Patient = ({patient, setPatient}) => {
           <button type='button' className='py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white text-bold rounded-md' onClick={()=>{
             setPatient(patient);
           }}>Edit</button>
-          <button type='button' className='py-2 px-10 bg-red-600 hover:bg-red-700 text-white text-bold rounded-md'>Delete</button>
+          <button type='button' className='py-2 px-10 bg-red-600 hover:bg-red-700 text-white text-bold rounded-md' onClick={handleDelete}>Delete</button>
         </div>
       </div>
   )
