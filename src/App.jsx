@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form } from "./components/Form"
 import { Header } from "./components/Header"
 import { List } from "./components/List"
@@ -12,6 +12,23 @@ function App() {
     const updatedPatients = patients.filter(patient => patient.id !== id);
     setPatients(updatedPatients);
   }
+
+  useEffect(() => {
+    const getData = () => {
+      const data = JSON.parse(localStorage.getItem('patients')) ?? [];
+
+      setPatients(data);
+    }
+
+    getData();
+    
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('patients', JSON.stringify(patients));
+  }, [patients]);
+
+
 
   return (
     <div className="container mx-auto mt-20">
