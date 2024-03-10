@@ -5,19 +5,21 @@ import { List } from "./components/List"
 
 function App() {
 
-  const [pets, setPets] = useState([])
+  const [patients, setPatients] = useState([]);
+  const [patient, setPatient] = useState({});
 
   return (
     <div className="container mx-auto mt-20">
       <Header />
       <div className="mt-12 mx-4 md:mx-24 md:flex text-center">
         <Form
-          pets={pets}
-          setPets={setPets}
+          patients={patients}
+          setPatients={setPatients}
+          patient={patient}
         />
         <List 
-          pets={pets}
-          
+          patients={patients}
+          setPatient={setPatient}
         />
       </div>
     </div>
